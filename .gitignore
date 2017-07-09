@@ -11,3 +11,6 @@ lib/
 Thirdparty/g2o/lib/
 Thirdparty/DBoW2/lib/
 KeyFrameTrajectory.txt
+Examples/ROS/ORB_SLAM2/Mono
+Examples/ROS/ORB_SLAM2/RGBD
+Examples/ROS/ORB_SLAM2/Stereo
