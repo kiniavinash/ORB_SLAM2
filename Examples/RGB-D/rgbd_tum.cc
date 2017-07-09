@@ -18,6 +18,7 @@
 * along with ORB-SLAM2. If not, see <http://www.gnu.org/licenses/>.
 */
 
+using namespace std;
 
 #include<iostream>
 #include<algorithm>
@@ -28,16 +29,17 @@
 
 #include<System.h>
 
-using namespace std;
 
 void LoadImages(const string &strAssociationFilename, vector<string> &vstrImageFilenamesRGB,
                 vector<string> &vstrImageFilenamesD, vector<double> &vTimestamps);
 
 int main(int argc, char **argv)
 {
-    if(argc != 5)
+
+    bool bReuseMap = false;
+    if(argc != 6)
     {
-        cerr << endl << "Usage: ./rgbd_tum path_to_vocabulary path_to_settings path_to_sequence path_to_association" << endl;
+        cerr << endl << "Usage: ./rgbd_tum path_to_vocabulary path_to_settings path_to_sequence path_to_association reusemap" << endl;
         return 1;
     }
 
@@ -61,8 +63,13 @@ int main(int argc, char **argv)
         return 1;
     }
 
+    if (!strcmp(argv[5], "true"))
+    {
+		bReuseMap = true;
+	}
+
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true);
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::RGBD,true,bReuseMap);
 
     // Vector for tracking time statistics
     vector<float> vTimesTrack;

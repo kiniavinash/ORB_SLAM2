@@ -525,6 +525,7 @@ void Tracking::Track()
     // Store frame pose information to retrieve the complete camera trajectory afterwards.
     if(!mCurrentFrame.mTcw.empty() && mCurrentFrame.mpReferenceKF)
     {
+        
         cv::Mat Tcr = mCurrentFrame.mTcw*mCurrentFrame.mpReferenceKF->GetPoseInverse();
         mlRelativeFramePoses.push_back(Tcr);
         mlpReferences.push_back(mpReferenceKF);
@@ -533,8 +534,12 @@ void Tracking::Track()
     }
     else
     {
+        
         // This can happen if tracking is lost
-        mlRelativeFramePoses.push_back(mlRelativeFramePoses.back());
+        if(mlRelativeFramePoses.size() != 0)
+        {
+            mlRelativeFramePoses.push_back(mlRelativeFramePoses.back());
+        }
         mlpReferences.push_back(mlpReferences.back());
         mlFrameTimes.push_back(mlFrameTimes.back());
         mlbLost.push_back(mState==LOST);

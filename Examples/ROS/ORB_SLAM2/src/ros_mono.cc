@@ -111,10 +111,10 @@ int main(int argc, char **argv)
     {
 		bReuseMap = true;
 	}
-   	ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true, bReuseMap);
+   	ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true,bReuseMap);
     
-    //if (bReuseMap)
-		//SLAM.LoadMap("Slam_Map.bin");
+    // if (bReuseMap)
+	// 	SLAM.LoadMap("Slam_Map.bin");
     
 	ImageGrabber igb(&SLAM);
 

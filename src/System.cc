@@ -34,7 +34,7 @@ bool has_suffix(const std::string &str, const std::string &suffix) {
 namespace ORB_SLAM2
 {
 
-System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor,
+System::System(const string &strVocFile, const string &strSettingsFile, const eSensor sensor, 
                const bool bUseViewer, const bool bReuse):mSensor(sensor),mbReset(false),mbActivateLocalizationMode(bReuse),
         mbDeactivateLocalizationMode(false)
 {
@@ -336,6 +336,7 @@ void System::Shutdown()
 
 void System::LoadMap(const string &filename)
 {
+    
     {
         std::ifstream is(filename);
 
