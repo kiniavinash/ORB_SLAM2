@@ -14,3 +14,6 @@ KeyFrameTrajectory.txt
 Examples/ROS/ORB_SLAM2/Mono
 Examples/ROS/ORB_SLAM2/RGBD
 Examples/ROS/ORB_SLAM2/Stereo
+build/
+Thirdparty/DBoW2/build/
+Thirdparty/g2o/build/
